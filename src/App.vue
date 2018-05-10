@@ -43,12 +43,24 @@
 export default {
   data () {
     return {
-      sideNav: false,
-      menuItems: [
-        {icon: 'add', title: 'Create audit', link: '/CreateAudit'},
-        {icon: 'check_box', title: 'Do audit', link: '/DoAudit'}
+      sideNav: false
+    }
+  },
+  computed: {
+    menuItems () {
+      let menuItems = [
+        {icon: 'perm_identity', title: 'Sign in', link: '/SignIn'}
       ]
-
+      if (this.userIsAuthenticated) {
+        menuItems = [
+          {icon: 'add', title: 'Create audit', link: '/CreateAudit'},
+          {icon: 'check_box', title: 'Do audit', link: '/DoAudit'}
+        ]
+      }
+      return menuItems
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
   }
 }

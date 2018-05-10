@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Createaudit from '@/components/CreateAudit/Createaudit'
 import Doaudit from '@/components/DoAudit/Doaudit'
 import Audit from '@/components/DoAudit/Audit'
-
+import SignIn from '@/components/Signin'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +29,11 @@ export default new Router({
       name: 'Audit',
       props: true,
       component: Audit
+    },
+    {
+      path: '/SignIn',
+      name: 'SignIn',
+      component: SignIn
     }
   ]
 })

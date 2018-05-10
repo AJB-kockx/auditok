@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import {store} from './store'
+import * as firebase from 'firebase'
+import AlertCmp from './components/Alert.vue'
 import {
   Vuetify,
   VApp,
@@ -17,7 +19,8 @@ import {
   VForm,
   VTextField,
   transitions,
-  VCard
+  VCard,
+  VAlert
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -34,9 +37,11 @@ Vue.use(Vuetify, {
     VForm,
     transitions,
     VTextField,
-    VCard
+    VCard,
+    VAlert
   }
 })
+Vue.component('app-alert', AlertCmp)
 
 Vue.config.productionTip = false
 
@@ -46,5 +51,14 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyAt_mzUHz4-spIHMfcK9e92qVxdHlPtY_E',
+      authDomain: 'audit-8df60.firebaseapp.com',
+      databaseURL: 'https://audit-8df60.firebaseio.com',
+      projectId: 'audit-8df60',
+      storageBucket: 'audit-8df60.appspot.com'
+    })
+  }
 })
