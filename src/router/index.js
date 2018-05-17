@@ -5,6 +5,7 @@ import Createaudit from '@/components/CreateAudit/Createaudit'
 import Doaudit from '@/components/DoAudit/Doaudit'
 import Audit from '@/components/DoAudit/Audit'
 import SignIn from '@/components/Signin'
+import AuthGuard from './auth-guard'
 Vue.use(Router)
 
 export default new Router({
@@ -17,12 +18,14 @@ export default new Router({
     {
       path: '/CreateAudit',
       name: 'Createaudit',
-      component: Createaudit
+      component: Createaudit,
+      beforeEnter: AuthGuard
     },
     {
       path: '/DoAudit',
       name: 'Doaudit',
-      component: Doaudit
+      component: Doaudit,
+      beforeEnter: AuthGuard
     },
     {
       path: '/DoAudit/:id',

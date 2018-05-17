@@ -60,5 +60,11 @@ new Vue({
       projectId: 'audit-8df60',
       storageBucket: 'audit-8df60.appspot.com'
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+    this.$store.dispatch('loadAudits')
   }
 })

@@ -7,8 +7,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     loadedAudits: [
-      {id: '1', title: 'Audit1', subTitle: 'Een audit 1', date: '1-1-2018'},
-      {id: '2', title: 'Audit2', subTitle: 'Een audit 2', date: '1-2-2018'}
+      {id: '1', title: 'Audit1', subtitle: 'Een audit 1', date: '1-1-2018'},
+      {id: '2', title: 'Audit2', subtitle: 'Een audit 2', date: '1-2-2018'}
     ],
     user: null,
     loading: false,
@@ -29,17 +29,50 @@ export const store = new Vuex.Store({
     },
     clearError (state) {
       state.error = null
+    },
+    setLoadedAudits (state, payload) {
+      state.loadedAudits = payload
     }
   },
   actions: {
+    loadAudits ({commit}) {
+      commit('setLoading', true)
+      firebase.database().ref('audits').once('value')
+        .then((data) => {
+          const audits = []
+          const obj = data.val()
+          for (let key in obj) {
+            audits.push({
+              id: key,
+              title: obj[key].title,
+              subtitle: obj[key.subtitle]
+            })
+          }
+          commit('setLoadedAudits', audits)
+          commit('setLoading', false)
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+          })
+    },
     createAudit ({commit}, payload) {
       const audit = {
         title: payload.title,
-        subtitle: payload.subtitle,
-        id: '3'
+        subtitle: payload.subtitle
       }
-      // firebase
-      commit('createAudit', audit)
+      firebase.database().ref('audits').push(audit)
+        .then((data) => {
+          const key = data.key
+          console.log(data)
+          commit('createAudit', {
+            ...audit,
+            id: key
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     signUserIn ({commit}, payload) {
       commit('setLoading', true)
@@ -61,6 +94,13 @@ export const store = new Vuex.Store({
             console.log(error)
           }
         )
+    },
+    autoSignIn ({commit}, payload) {
+      commit('setUser', {id: payload.uid})
+    },
+    logout ({commit}) {
+      firebase.auth().signOut()
+      commit('setUser', null)
     },
     clearError ({commit}) {
       commit('clearError')
