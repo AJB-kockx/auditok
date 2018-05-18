@@ -6,6 +6,7 @@ import router from './router'
 import {store} from './store'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Alert.vue'
+import EditAuditDetailsDialog from './components/doAudit/edit/EditAuditDetailsDialog'
 import {
   Vuetify,
   VApp,
@@ -20,7 +21,9 @@ import {
   VTextField,
   transitions,
   VCard,
-  VAlert
+  VAlert,
+  VDataTable,
+  VDialog
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -38,11 +41,14 @@ Vue.use(Vuetify, {
     transitions,
     VTextField,
     VCard,
-    VAlert
+    VAlert,
+    VDataTable,
+    VDialog
   }
 })
-Vue.component('app-alert', AlertCmp)
 
+Vue.component('app-alert', AlertCmp)
+Vue.component('app-edit-audit-details-dialog', EditAuditDetailsDialog)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

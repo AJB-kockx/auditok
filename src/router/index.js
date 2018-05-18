@@ -31,7 +31,8 @@ export default new Router({
       path: '/DoAudit/:id',
       name: 'Audit',
       props: true,
-      component: Audit
+      component: Audit,
+      beforeEnter: AuthGuard
     },
     {
       path: '/SignIn',

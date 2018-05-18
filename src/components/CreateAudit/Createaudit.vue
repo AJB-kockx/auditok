@@ -11,11 +11,11 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field
-              name="title"
-              label="Title"
-              id="title"
-              v-model="title"
-              required></v-text-field>
+                name="title"
+                label="Title"
+                id="title"
+                v-model="title"
+                required></v-text-field>
               <v-text-field
                 name="subtitle"
                 label="SubTitle"

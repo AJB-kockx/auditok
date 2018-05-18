@@ -5,7 +5,14 @@
       <v-card>
         <v-card-title>
           {{audit.title}}
+          <template>
+            <v-spacer></v-spacer>
+            <app-edit-audit-details-dialog :audit="audit"></app-edit-audit-details-dialog>
+          </template>
         </v-card-title>
+        <v-card-text>
+          {{audit.subtitle}}
+        </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>

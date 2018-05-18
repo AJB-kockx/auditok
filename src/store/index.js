@@ -32,11 +32,21 @@ export const store = new Vuex.Store({
     },
     setLoadedAudits (state, payload) {
       state.loadedAudits = payload
+    },
+    updateAudit (state, payload) {
+      const audit = state.loadedAudits.find(audit => {
+        return audit.id === payload.id
+      })
+      if (payload.title) {
+        audit.title = payload.title
+      }
+      if (payload.subtitle) {
+        audit.subtitle = payload.subtitle
+      }
     }
   },
   actions: {
     loadAudits ({commit}) {
-      commit('setLoading', true)
       firebase.database().ref('audits').once('value')
         .then((data) => {
           const audits = []
@@ -45,11 +55,10 @@ export const store = new Vuex.Store({
             audits.push({
               id: key,
               title: obj[key].title,
-              subtitle: obj[key.subtitle]
+              subtitle: obj[key].subtitle
             })
           }
           commit('setLoadedAudits', audits)
-          commit('setLoading', false)
         })
         .catch(
           (error) => {
@@ -94,6 +103,25 @@ export const store = new Vuex.Store({
             console.log(error)
           }
         )
+    },
+    updateAuditData ({commit}, payload) {
+      commit('setLoading', true)
+      const updateObj = {}
+      if (payload.title) {
+        updateObj.title = payload.title
+      }
+      if (payload.subtitle) {
+        updateObj.subtitle = payload.subtitle
+      }
+      firebase.database().ref('audits').child(payload.id).update(updateObj)
+        .then(() => {
+          commit('setLoading', false)
+          commit('updateAudit', payload)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
     },
     autoSignIn ({commit}, payload) {
       commit('setUser', {id: payload.uid})
