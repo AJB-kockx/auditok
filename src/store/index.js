@@ -55,7 +55,8 @@ export const store = new Vuex.Store({
             audits.push({
               id: key,
               title: obj[key].title,
-              subtitle: obj[key].subtitle
+              subtitle: obj[key].subtitle,
+              questions: obj[key].questions
             })
           }
           commit('setLoadedAudits', audits)
@@ -68,7 +69,8 @@ export const store = new Vuex.Store({
     createAudit ({commit}, payload) {
       const audit = {
         title: payload.title,
-        subtitle: payload.subtitle
+        subtitle: payload.subtitle,
+        questions: payload.questions
       }
       firebase.database().ref('audits').push(audit)
         .then((data) => {

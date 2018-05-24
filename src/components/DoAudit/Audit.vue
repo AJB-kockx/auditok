@@ -13,6 +13,9 @@
         <v-card-text>
           {{audit.subtitle}}
         </v-card-text>
+        <v-card-text v-for="question in audit.questions">
+          {{question.question}}
+        </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
