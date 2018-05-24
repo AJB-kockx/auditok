@@ -24,6 +24,28 @@
                 required></v-text-field>
             </v-flex>
           </v-layout>
+          <v-container>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-text-field
+                name="vraag"
+                label="Vraag"
+                id="vraag"
+                v-model="vraag"
+                required></v-text-field>
+              <v-select
+                :items="items"
+                v-model="e1"
+                label="Select"
+                single-line
+              ></v-select>
+              <v-text-field
+                name="uitleg"
+                label="Uitleg"
+                id="uitleg"
+                v-model="uitleg"
+                required></v-text-field>
+            </v-flex>
+          </v-container>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn type="submit">Create Audit</v-btn>
@@ -40,7 +62,14 @@
      data () {
        return {
          title: '',
-         subtitle: ''
+         subtitle: '',
+         items: [
+           { text: 'Schaal 1' },
+           { text: 'Schaal 2' },
+           { text: 'Schaal 3' },
+           { text: 'Schaal 4' },
+           { text: 'Schaal 5' }
+         ]
        }
      },
      methods: {

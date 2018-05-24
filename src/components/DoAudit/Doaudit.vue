@@ -35,6 +35,7 @@
   export default {
     computed: {
       audits () {
+        this.$store.dispatch('loadAudits')
         return this.$store.getters.loadedAudits
       },
       loading () {

@@ -23,7 +23,8 @@ import {
   VCard,
   VAlert,
   VDataTable,
-  VDialog
+  VDialog,
+  VSelect
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -43,7 +44,8 @@ Vue.use(Vuetify, {
     VCard,
     VAlert,
     VDataTable,
-    VDialog
+    VDialog,
+    VSelect
   }
 })
 
