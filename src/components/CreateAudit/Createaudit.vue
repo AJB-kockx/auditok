@@ -24,7 +24,9 @@
                 required></v-text-field>
             </v-flex>
           </v-layout>
-          <v-layout row v-for="question, index in questions">
+          <v-layout
+            row
+            v-for="question, index in questions">
             <v-container >
               <v-flex xs12 sm6 offset-sm3>
                 <v-text-field
@@ -51,7 +53,7 @@
               </v-flex>
             </v-container>
           </v-layout>
-          <v-layout row>
+          <v-layout row wrap>
             <v-flex xs12 sm6 offset-sm3>
               <v-btn type="submit">Create Audit</v-btn>
               <v-btn

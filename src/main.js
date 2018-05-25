@@ -7,6 +7,7 @@ import {store} from './store'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Alert.vue'
 import EditAuditDetailsDialog from './components/doAudit/edit/EditAuditDetailsDialog'
+import QuestionDialog from './components/DoAudit/QuestionDialog'
 import {
   Vuetify,
   VApp,
@@ -51,6 +52,7 @@ Vue.use(Vuetify, {
 
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-audit-details-dialog', EditAuditDetailsDialog)
+Vue.component('question-dialog', QuestionDialog)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
