@@ -78,11 +78,11 @@
          title: '',
          subtitle: '',
          items: [
-           { text: 'Schaal 1' },
-           { text: 'Schaal 2' },
-           { text: 'Schaal 3' },
-           { text: 'Schaal 4' },
-           { text: 'Schaal 5' }
+           { text: 'Ja/Nee' },
+           { text: 'Ja/Nee/Soms' },
+           { text: '1tot3' },
+           { text: '1tot5' },
+           { text: '1tot7' }
          ],
          questions: [
            {

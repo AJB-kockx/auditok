@@ -28,7 +28,7 @@
               </template>
             </v-card-title>
             <v-card-actions>
-              <v-text-field></v-text-field>
+              <scale-component :question="question"></scale-component>
             </v-card-actions>
           </v-card>
         </v-container>

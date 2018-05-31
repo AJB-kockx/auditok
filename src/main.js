@@ -8,6 +8,7 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Alert.vue'
 import EditAuditDetailsDialog from './components/doAudit/edit/EditAuditDetailsDialog'
 import QuestionDialog from './components/DoAudit/QuestionDialog'
+import ScaleComponent from './components/DoAudit/ScaleComponent'
 import {
   Vuetify,
   VApp,
@@ -25,7 +26,8 @@ import {
   VAlert,
   VDataTable,
   VDialog,
-  VSelect
+  VSelect,
+  VRadioGroup
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -46,13 +48,15 @@ Vue.use(Vuetify, {
     VAlert,
     VDataTable,
     VDialog,
-    VSelect
+    VSelect,
+    VRadioGroup
   }
 })
 
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-audit-details-dialog', EditAuditDetailsDialog)
 Vue.component('question-dialog', QuestionDialog)
+Vue.component('scale-component', ScaleComponent)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
