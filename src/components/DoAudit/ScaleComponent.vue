@@ -2,7 +2,8 @@
   <v-container>
     <v-layout row wrap>
       <v-flex>
-        <v-radio-group v-if="questionScale === 'Ja/Nee'">
+        <v-radio-group v-if="questionScale === 'Ja/Nee'"
+        v-model="question.answer">
           <v-radio
             label="Ja"
             value="Ja">
@@ -12,7 +13,8 @@
             value="Nee">
           </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === 'Ja/Nee/Soms'">
+        <v-radio-group v-if="questionScale === 'Ja/Nee/Soms'"
+                       v-model="question.answer">
           <v-radio
             label="Ja"
             value="Ja">
@@ -26,7 +28,8 @@
             value="Soms">
           </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === '1tot3'">
+        <v-radio-group v-if="questionScale === '1tot3'"
+                       v-model="question.answer">
           <v-radio
             label="1"
             value="1">
@@ -40,7 +43,8 @@
             value="3">
           </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === '1tot5'">
+        <v-radio-group v-if="questionScale === '1tot5'"
+                       v-model="question.answer">
           <v-radio
             label="1"
             value="1">
@@ -62,7 +66,8 @@
             value="5">
           </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === '1tot7'">
+        <v-radio-group v-if="questionScale === '1tot7'"
+                       v-model="question.answer">
           <v-radio
             label="1"
             value="1">

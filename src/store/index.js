@@ -134,6 +134,26 @@ export const store = new Vuex.Store({
     },
     clearError ({commit}) {
       commit('clearError')
+    },
+    createAnsweredAudit ({commit}, payload) {
+      const answeredAudit = {
+        title: payload.auditTitle,
+        subtitle: payload.auditSubtitle,
+        questions: payload.answeredQuestions,
+        taker: payload.auditTaker
+      }
+      firebase.database().ref('answeredAudits').push(answeredAudit)
+        .then((data) => {
+          const key = data.key
+          console.log(data)
+          commit('createAnsweredAudit', {
+            ...answeredAudit,
+            id: key
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   },
   getters: {

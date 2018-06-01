@@ -88,7 +88,8 @@
            {
              question: '',
              scale: '',
-             explanation: ''
+             explanation: '',
+             answer: ''
            }
          ]
        }
@@ -98,7 +99,8 @@
          const auditData = {
            title: this.title,
            subtitle: this.subtitle,
-           questions: this.questions
+           questions: this.questions,
+           answer: this.answer
          }
          this.$store.dispatch('createAudit', auditData)
          this.$router.push('/Doaudit')
@@ -107,7 +109,8 @@
          this.questions.push({
            question: '',
            scale: '',
-           explanation: ''
+           explanation: '',
+           answer: ''
          })
        },
        deleteQuestion (index) {
