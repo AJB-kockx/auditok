@@ -66,7 +66,8 @@ export default {
       if (this.userIsAuthenticated) {
         menuItems = [
           {icon: 'add', title: 'Create audit', link: '/CreateAudit'},
-          {icon: 'check_box', title: 'Do audit', link: '/DoAudit'}
+          {icon: 'check_box', title: 'Do audit', link: '/DoAudit'},
+          {icon: 'assignment', title: 'Completed Audits', link: '/CompAudits'}
         ]
       }
       return menuItems

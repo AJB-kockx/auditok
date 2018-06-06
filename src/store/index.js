@@ -6,10 +6,8 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    loadedAudits: [
-      {id: '1', title: 'Audit1', subtitle: 'Een audit 1', date: '1-1-2018'},
-      {id: '2', title: 'Audit2', subtitle: 'Een audit 2', date: '1-2-2018'}
-    ],
+    loadedAudits: [],
+    loadedCompAudits: [],
     user: null,
     loading: false,
     error: null
@@ -17,6 +15,9 @@ export const store = new Vuex.Store({
   mutations: {
     createAudit (state, payload) {
       state.loadedAudits.push(payload)
+    },
+    createAnsweredAudit (state, payload) {
+      state.loadedCompAudits.push(payload)
     },
     setUser (state, payload) {
       state.user = payload
@@ -32,6 +33,9 @@ export const store = new Vuex.Store({
     },
     setLoadedAudits (state, payload) {
       state.loadedAudits = payload
+    },
+    setLoadedCompAudits (state, payload) {
+      state.loadedCompAudits = payload
     },
     updateAudit (state, payload) {
       const audit = state.loadedAudits.find(audit => {
@@ -60,6 +64,27 @@ export const store = new Vuex.Store({
             })
           }
           commit('setLoadedAudits', audits)
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+          })
+    },
+    loadCompAudits ({commit}) {
+      firebase.database().ref('answeredAudits').once('value')
+        .then((data) => {
+          const compAudits = []
+          const obj = data.val()
+          for (let key in obj) {
+            compAudits.push({
+              id: key,
+              title: obj[key].title,
+              subtitle: obj[key].subtitle,
+              taker: obj[key].taker,
+              questions: obj[key].questions
+            })
+          }
+          commit('setLoadedCompAudits', compAudits)
         })
         .catch(
           (error) => {
@@ -162,9 +187,21 @@ export const store = new Vuex.Store({
         return auditA.date > auditB.date
       })
     },
+    loadedCompAudits (state) {
+      return state.loadedCompAudits.sort((auditA, auditB) => {
+        return auditA.date > auditB.date
+      })
+    },
     loadedAudit (state) {
       return (auditId) => {
         return state.loadedAudits.find((audit) => {
+          return audit.id === auditId
+        })
+      }
+    },
+    loadedCompAudit (state) {
+      return (auditId) => {
+        return state.loadedCompAudits.find((audit) => {
           return audit.id === auditId
         })
       }
