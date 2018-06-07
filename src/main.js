@@ -9,6 +9,7 @@ import AlertCmp from './components/Alert.vue'
 import EditAuditDetailsDialog from './components/doAudit/edit/EditAuditDetailsDialog'
 import QuestionDialog from './components/DoAudit/QuestionDialog'
 import ScaleComponent from './components/DoAudit/ScaleComponent'
+import JsonExcel from 'vue-json-excel'
 import {
   Vuetify,
   VApp,
@@ -57,6 +58,7 @@ Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-audit-details-dialog', EditAuditDetailsDialog)
 Vue.component('question-dialog', QuestionDialog)
 Vue.component('scale-component', ScaleComponent)
+Vue.component('downloadExcel', JsonExcel)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

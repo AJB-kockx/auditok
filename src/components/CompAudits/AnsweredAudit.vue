@@ -19,6 +19,13 @@
               <v-card-text>{{question.answer}}</v-card-text>
             </v-card>
           </v-container>
+          <download-excel
+            class="btn btn-default"
+            :data="json_data"
+            :fields="json_fields"
+            name="Audit.xls">
+            Download Excel
+          </download-excel>
         </v-container>
       </v-flex>
     </v-layout>
@@ -27,11 +34,53 @@
 
 <script>
   export default {
+    data () {
+      return {
+        AuditTitle: '',
+        AuditSubtitle: '',
+        AuditTaker: '',
+        AuditQuestions: '',
+        json_fields: {
+          'Audit Titel': 'title',
+          'Audit Subtitel': 'subtitle',
+          'Afnemer': 'taker',
+          'Vraag': 'question',
+          'Schaal': 'scale',
+          'Antwoord': 'answer'
+        },
+        json_data: []
+      }
+    },
     props: ['id'],
     computed: {
       audit () {
         return this.$store.getters.loadedCompAudit(this.id)
       }
+    },
+    methods: {
+      setAuditData () {
+        this.json_data.push({
+          title: this.audit.title,
+          subtitle: this.audit.subtitle,
+          taker: this.audit.taker,
+          question: '',
+          scale: '',
+          answer: ''
+        })
+        for (var i = 0; i < this.audit.questions.length; i++) {
+          this.json_data.push({
+            title: '',
+            subtitle: '',
+            taker: '',
+            question: this.audit.questions[i].question,
+            scale: this.audit.questions[i].scale.text,
+            answer: this.audit.questions[i].answer
+          })
+        }
+      }
+    },
+    created () {
+      this.setAuditData()
     }
   }
 </script>
