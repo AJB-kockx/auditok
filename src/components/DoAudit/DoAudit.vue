@@ -11,6 +11,7 @@
             v-if="loading"></v-progress-circular>
         </v-flex>
       </v-layout>
+      <h3>Audit Templates:</h3>
       <v-list v-for="audit in audits" :key="audit.id" class="mb-2" v-if="!loading">
         <v-list-tile>
           <v-list-tile-content>
@@ -18,12 +19,13 @@
             <v-list-tile-sub-title>{{audit.subtitle}}</v-list-tile-sub-title>
           </v-list-tile-content>
           <v-list-tile-action>
-            <v-btn flat :to=" '/DoAudit/' + audit.id">
+            <v-btn
+              flat
+              small
+              :to=" '/DoAudit/' + audit.id">
               Do audit
             </v-btn>
-            <v-btn flat>
-              Delete audit
-            </v-btn>
+            <delete-dialog :audit = "audit"></delete-dialog>
           </v-list-tile-action>
         </v-list-tile>
       </v-list>

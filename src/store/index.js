@@ -150,6 +150,9 @@ export const store = new Vuex.Store({
           commit('setLoading', false)
         })
     },
+    deleteAudit ({commit}, payload) {
+      firebase.database().ref('audits').child(payload.id).remove()
+    },
     autoSignIn ({commit}, payload) {
       commit('setUser', {id: payload.uid})
     },

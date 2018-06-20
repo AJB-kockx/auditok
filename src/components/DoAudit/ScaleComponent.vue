@@ -12,6 +12,14 @@
             label="Nee"
             value="Nee">
           </v-radio>
+          <v-radio
+            label="Niet beoordeeld"
+            value="Niet Beoordeeld">
+          </v-radio>
+          <v-radio
+            label="NVT"
+            value="NVT">
+          </v-radio>
         </v-radio-group>
         <v-radio-group v-if="questionScale === 'Ja/Nee/Soms'"
                        v-model="question.answer">
@@ -27,8 +35,16 @@
             label="Soms"
             value="Soms">
           </v-radio>
+          <v-radio
+            label="Niet beoordeeld"
+            value="Niet Beoordeeld">
+          </v-radio>
+          <v-radio
+            label="NVT"
+            value="NVT">
+          </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === '1tot3'"
+        <v-radio-group v-if="questionScale === '1 tot 3'"
                        v-model="question.answer">
           <v-radio
             label="1"
@@ -43,7 +59,7 @@
             value="3">
           </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === '1tot5'"
+        <v-radio-group v-if="questionScale === '1 tot 5'"
                        v-model="question.answer">
           <v-radio
             label="1"
@@ -66,7 +82,7 @@
             value="5">
           </v-radio>
         </v-radio-group>
-        <v-radio-group v-if="questionScale === '1tot7'"
+        <v-radio-group v-if="questionScale === '1 tot 7'"
                        v-model="question.answer">
           <v-radio
             label="1"

@@ -2,35 +2,29 @@
   <v-dialog
     v-model="dialog"
     hide-overlay
-    max-width="500"
+    max-width="600px"
+    scrollable
     :disabled=questionNotAvailable>
     <v-btn
       fab
       accent
       small
       slot="activator"
-      :disabled=questionNotAvailable>
+      color="info"
+      :disabled=questionNotAvailable
+    >
       <v-icon>info</v-icon>
     </v-btn>
     <v-card>
-      <v-container>
-        <v-divider></v-divider>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card-text>
-              {{ questionExplanation }}
-            </v-card-text>
-          </v-flex>
-        </v-layout>
-        <v-divider></v-divider>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card-actions>
-              <v-btn flat @click="dialog = false">Close</v-btn>
-            </v-card-actions>
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <v-card-title>
+        <h4>Uitleg:</h4>
+      </v-card-title>
+      <v-card-text>
+        {{ questionExplanation }}
+      </v-card-text>
+      <v-card-actions>
+        <v-btn flat @click="dialog = false">Close</v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

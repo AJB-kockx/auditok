@@ -11,6 +11,7 @@
             v-if="loading"></v-progress-circular>
         </v-flex>
       </v-layout>
+      <h3>Completed audits:</h3>
       <v-list v-for="audit in audits" :key="audit.id" class="mb-2" v-if="!loading">
         <v-list-tile>
           <v-list-tile-content>

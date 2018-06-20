@@ -6,7 +6,7 @@ import Doaudit from '@/components/DoAudit/Doaudit'
 import AnsweredAuditList from '@/components/CompAudits/AnsweredAuditList'
 import Audit from '@/components/DoAudit/Audit'
 import AnsweredAudit from '@/components/CompAudits/AnsweredAudit'
-import SignIn from '@/components/Signin'
+import SignIn from '@/components/SignIn'
 import AuthGuard from './auth-guard'
 Vue.use(Router)
 

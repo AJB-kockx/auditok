@@ -6,9 +6,10 @@ import router from './router'
 import {store} from './store'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Alert.vue'
-import EditAuditDetailsDialog from './components/doAudit/edit/EditAuditDetailsDialog'
+import EditAuditDetailsDialog from './components/DoAudit/Edit/EditAuditDetailsDialog'
 import QuestionDialog from './components/DoAudit/QuestionDialog'
 import ScaleComponent from './components/DoAudit/ScaleComponent'
+import deleteDialog from './components/DoAudit/Delete/DeleteAuditDialog'
 import JsonExcel from 'vue-json-excel'
 import {
   Vuetify,
@@ -28,7 +29,8 @@ import {
   VDataTable,
   VDialog,
   VSelect,
-  VRadioGroup
+  VRadioGroup,
+  VDivider
 } from 'vuetify'
 import '../node_modules/vuetify/src/stylus/app.styl'
 
@@ -50,7 +52,8 @@ Vue.use(Vuetify, {
     VDataTable,
     VDialog,
     VSelect,
-    VRadioGroup
+    VRadioGroup,
+    VDivider
   }
 })
 
@@ -58,6 +61,7 @@ Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-audit-details-dialog', EditAuditDetailsDialog)
 Vue.component('question-dialog', QuestionDialog)
 Vue.component('scale-component', ScaleComponent)
+Vue.component('delete-dialog', deleteDialog)
 Vue.component('downloadExcel', JsonExcel)
 Vue.config.productionTip = false
 

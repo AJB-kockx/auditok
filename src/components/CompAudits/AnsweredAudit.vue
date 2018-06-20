@@ -5,7 +5,7 @@
         <v-container>
           <v-card>
             <v-card-title>
-              {{audit.title}}
+              <h4>{{audit.title}}</h4>
             </v-card-title>
             <v-card-text>{{audit.subtitle}}</v-card-text>
             <v-card-text>{{audit.taker}}</v-card-text>
@@ -17,6 +17,7 @@
               <v-card-text>{{question.question}}</v-card-text>
               <v-card-text>{{question.scale.text}}</v-card-text>
               <v-card-text>{{question.answer}}</v-card-text>
+              <v-divider></v-divider>
             </v-card>
           </v-container>
           <download-excel
@@ -36,10 +37,6 @@
   export default {
     data () {
       return {
-        AuditTitle: '',
-        AuditSubtitle: '',
-        AuditTaker: '',
-        AuditQuestions: '',
         json_fields: {
           'Audit Titel': 'title',
           'Audit Subtitel': 'subtitle',

@@ -14,7 +14,6 @@
             <v-card-title>Edit Audit</v-card-title>
           </v-flex>
         </v-layout>
-        <v-divider></v-divider>
         <v-layout row wrap>
           <v-flex xs12>
             <v-card-text>
@@ -33,7 +32,6 @@
             </v-card-text>
           </v-flex>
         </v-layout>
-        <v-divider></v-divider>
         <v-layout row wrap>
           <v-flex xs12>
             <v-card-actions>

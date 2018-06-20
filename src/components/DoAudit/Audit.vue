@@ -3,40 +3,43 @@
     <v-layout>
       <v-flex>
         <v-container>
-            <v-card>
-              <v-card-title>
-                {{audit.title}}
-                <template>
-                  <v-spacer></v-spacer>
-                  <app-edit-audit-details-dialog :audit="audit"></app-edit-audit-details-dialog>
-                </template>
-              </v-card-title>
+          <v-card>
+            <v-card-title>
+              <h3>{{audit.title}}</h3>
+              <template>
+                <v-spacer></v-spacer>
+                <app-edit-audit-details-dialog :audit="audit"></app-edit-audit-details-dialog>
+              </template>
+            </v-card-title>
               <v-card-text>
                 {{audit.subtitle}}
               </v-card-text>
-              <v-card-actions>
-                <v-text-field v-model="auditTaker"></v-text-field>
-              </v-card-actions>
-            </v-card>
-        </v-container>
-        <v-form @submit.prevent="onSaveAudit">
-        <v-container
-          v-for="question in audit.questions">
-          <v-card>
-            <v-card-title>
-              {{question.question}}
-              <template>
-                <v-spacer></v-spacer>
-                <question-dialog :question="question"></question-dialog>
-              </template>
-            </v-card-title>
             <v-card-actions>
-              <scale-component :question="question"></scale-component>
+              <v-text-field
+                v-model="auditTaker"
+                label="Audit afnemer"
+                required></v-text-field>
             </v-card-actions>
           </v-card>
         </v-container>
+        <form @submit.prevent="onSaveAudit">
+          <v-container
+            v-for="question in audit.questions">
+            <v-card>
+              <v-card-title>
+                {{question.question}}
+                <template>
+                  <v-spacer></v-spacer>
+                  <question-dialog :question="question"></question-dialog>
+                </template>
+              </v-card-title>
+              <v-card-actions>
+                <scale-component :question="question"></scale-component>
+              </v-card-actions>
+            </v-card>
+          </v-container>
           <v-btn type="submit">Save Answers</v-btn>
-        </v-form>
+        </form>
       </v-flex>
     </v-layout>
   </v-container>
@@ -67,6 +70,7 @@
           answeredQuestions: this.audit.questions
         }
         this.$store.dispatch('createAnsweredAudit', completedAuditData)
+        this.$router.push('/CompAudits')
       }
     }
   }
