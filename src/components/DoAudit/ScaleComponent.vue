@@ -113,6 +113,10 @@
             value="7">
           </v-radio>
         </v-radio-group>
+        <v-text-field
+          v-if="questionScale === 'Vrij tekstveld'"
+          v-model="question.answer">
+        </v-text-field>
       </v-flex>
     </v-layout>
   </v-container>

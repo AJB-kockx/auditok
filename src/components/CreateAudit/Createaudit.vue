@@ -80,7 +80,8 @@
            { text: 'Ja/Nee/Soms' },
            { text: '1 tot 3' },
            { text: '1 tot 5' },
-           { text: '1 tot 7' }
+           { text: '1 tot 7' },
+           { text: 'Vrij tekstveld'}
          ],
          questions: [
            {

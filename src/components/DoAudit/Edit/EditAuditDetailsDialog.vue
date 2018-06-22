@@ -25,7 +25,7 @@
                 required></v-text-field>
               <v-text-field
                 name="subtitle"
-                label="SubTitle"
+                label="Subtitle"
                 id="subtitle"
                 v-model="editedSubtitle"
                 required></v-text-field>
