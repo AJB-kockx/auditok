@@ -24,7 +24,8 @@
         </v-container>
         <form @submit.prevent="onSaveAudit">
           <v-container
-            v-for="question in audit.questions">
+            v-for="question, index in audit.questions"
+            :key = "index">
             <v-card>
               <v-card-title>
                 {{question.question}}

@@ -13,7 +13,8 @@
             </v-card-actions>
           </v-card>
           <v-container>
-            <v-card v-for="question in audit.questions">
+            <v-card v-for="question, index in audit.questions"
+                    :key = "index">
               <v-card-text>{{question.question}}</v-card-text>
               <v-card-text>{{question.scale.text}}</v-card-text>
               <v-card-text>{{question.answer}}</v-card-text>

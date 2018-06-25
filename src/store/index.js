@@ -47,6 +47,9 @@ export const store = new Vuex.Store({
       if (payload.subtitle) {
         audit.subtitle = payload.subtitle
       }
+      if (payload.questions) {
+        audit.questions = payload.questions
+      }
     }
   },
   actions: {
@@ -139,6 +142,9 @@ export const store = new Vuex.Store({
       }
       if (payload.subtitle) {
         updateObj.subtitle = payload.subtitle
+      }
+      if (payload.questions) {
+        updateObj.questions = payload.questions
       }
       firebase.database().ref('audits').child(payload.id).update(updateObj)
         .then(() => {

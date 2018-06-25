@@ -11,8 +11,7 @@
       small
       slot="activator"
       color="info"
-      :disabled=questionNotAvailable
-    >
+      :disabled=questionNotAvailable>
       <v-icon>info</v-icon>
     </v-btn>
     <v-card>

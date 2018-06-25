@@ -26,7 +26,8 @@
           </v-layout>
           <v-layout
             row
-            v-for="question, index in questions">
+            v-for="question, index in questions"
+            :key = "index">
             <v-container>
               <v-flex xs12 sm6 offset-sm3>
                 <v-text-field
@@ -38,7 +39,7 @@
                 <v-select
                   :items="items"
                   v-model="question.scale"
-                  label="Select"
+                  label="Schaal"
                   single-line
                   required
                 ></v-select>
@@ -81,7 +82,7 @@
            { text: '1 tot 3' },
            { text: '1 tot 5' },
            { text: '1 tot 7' },
-           { text: 'Vrij tekstveld'}
+           { text: 'Vrij tekstveld' }
          ],
          questions: [
            {
