@@ -17,15 +17,15 @@
             <v-card-actions>
               <v-text-field
                 v-model="auditTaker"
-                label="Audit afnemer"
+                label="Audit afnemer (Alleen voornaam)"
                 required></v-text-field>
             </v-card-actions>
           </v-card>
         </v-container>
         <form @submit.prevent="onSaveAudit">
           <v-container
-            v-for="question, index in audit.questions"
-            :key = "index">
+            v-for="question, i in audit.questions"
+            :key = "i">
             <v-card>
               <v-card-title>
                 {{question.question}}
@@ -53,7 +53,8 @@
         dialog: false,
         auditTitle: '',
         auditSubtitle: '',
-        auditTaker: ''
+        auditTaker: '',
+        answeredQuestions: []
       }
     },
     props: ['id'],
